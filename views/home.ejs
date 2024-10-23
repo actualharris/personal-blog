@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        /* Basic styling for the post page */
+        .container {
+            margin: 20px auto;
+            width: 80%;
+        }
+        .nav-area ul {
+            list-style-type: none;
+        }
+        .nav-area ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .navigation a{
+            text-decoration: none;
+        }
+        
+        .post-area {
+            margin-top: 20px;
+        }
+        .post {
+            margin-bottom: 20px;
+        }
+        #post-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #post-content {
+            font-size: 18px;
+        }
+        
+        .post-actions a{
+            text-decoration: none;   
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav-area">
+            <ul class="navigation">
+                <li id="home" ><a href="/">Home</a></li>
+                <li id="create" ><a href="/create">Create</a></li>
+            </ul>
+        </div>
+        <div class="post-area">
+
+
+            <% if(posts.length > 0) {%>
+
+                <% posts.forEach((post) => { %> <!-- Loop through the posts array -->
+                    <div class="post">
+                        <h1 id="post-title"> <%= post.title %> </h1>
+                        <p id="post-content"> <%= post.content %> </p>
+
+                        <!-- Buttons for delete and update -->
+                        <div class="post-actions">
+                            <!-- Delete button -->
+                            <!-- <form action="/api/posts/delete/<%# post.id %>" style="display: inline;"> -->
+                            <a id="deleteBtn" href="/api/posts/delete/<%= post.id %>">
+                                <button type="submit">Delete</button>
+                            </a>
+                            <!-- </form> -->
+
+                            <!-- Update button -->
+                            <a href="/api/posts/update/<%= post.id %>">
+                                <button type="button">Edit</button>
+                            </a>
+                        </div>
+                    </div>
+                <% }) %>
+                
+                <% } else { %>
+                    <div class="post">
+                        <h1 id="post-title">No posts available</h1>
+                    </div>
+                <% } %>
+
+        </div>
+    </div>
+</body>
+</html>

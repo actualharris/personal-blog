@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Post</title>
+    <style>
+        /* Basic styling for the create page */
+        .container {
+            margin: 20px auto;
+            width: 80%;
+        }
+        .nav-area ul {
+            list-style-type: none;
+        }
+        .nav-area ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .navigation a{
+            text-decoration: none;
+        }
+        
+        .form {
+            margin-top: 20px;
+        }
+        .form label, .form input, .form textarea {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        .form-submit {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav-area">
+            <ul class="navigation">
+                <li id="home" ><a href="/">Home</a></li>
+                <li id="create" ><a href="/create">Create</a></li>
+            </ul>
+        </div>
+        <div class="post-area">
+            <!-- Form action updated to /new to match the server's POST route -->
+            <form action="/api/posts" class="form" id="form" method="POST">
+
+                <label for="title">Title:</label>
+                <input name="title" type="text" id="title" required placeholder="Title goes here!">
+
+                <label for="content">Content</label>
+                <textarea rows="15" name="content" id="content" required>Write what's on your mind!</textarea>
+
+                <button type="submit" class="form-submit">Post</button>
+
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>
